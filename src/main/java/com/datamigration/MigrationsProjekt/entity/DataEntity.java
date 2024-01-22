@@ -14,6 +14,7 @@ public class DataEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int hashtag_ID;    //primary key
+
     private String hashtag_name;
 
     public int getHashtag_ID() {
