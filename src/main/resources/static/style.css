@@ -1,0 +1,26 @@
+/* Füge hier dein benutzerdefiniertes Styling hinzu */
+
+.my-button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.my-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.my-table th, .my-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.my-table th {
+    background-color: #4CAF50;
+    color: white;
+}
