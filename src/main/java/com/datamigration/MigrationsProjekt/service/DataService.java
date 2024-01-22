@@ -2,6 +2,7 @@ package com.datamigration.MigrationsProjekt.service;
 
 import com.datamigration.MigrationsProjekt.entity.DataEntity;
 import com.datamigration.MigrationsProjekt.repository.DataRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,13 @@ import java.util.List;
 @Service
 public class DataService {
 
-    DataRepository datarepo;
+    @Autowired
+    private final DataRepository datarepo;
+
+    @Autowired
+    public DataService(DataRepository datarepo) {
+        this.datarepo = datarepo;
+    }
 
     public DataEntity getById(int id) {
         DataEntity dataEntity = datarepo.findById(id).orElse(null);
