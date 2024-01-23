@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "hashtags")
-public class DataEntity {
+public class MigrationEntity {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
