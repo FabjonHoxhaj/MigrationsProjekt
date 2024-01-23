@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Migrationsprojekt</h1>
+
+<h2>Quelltabelle</h2>
+<table border="1">
+    <tr>
+        <th>hashtag_ID</th>
+        <th>hashtag_name</th>
+        <th>Auswählen</th>
+    </tr>
+    <tr th:each="datensatz : ${daten}">
+        <td th:text="${datensatz.hashtag_ID}"></td>
+        <td th:text="${datensatz.hashtag_name}"></td>
+        <td><input type="checkbox" name="sourceCheckbox" value="${datensatz.hashtag_ID}"/></td>
+    </tr>
+</table>
+
+<br>
+
+<h2>Zieltabelle</h2>
+<table border="1" id="zielTabelle"> <!-- Füge eine eindeutige ID "zielTabelle" hinzu -->
+    <tr>
+        <th>hashtag_ID</th>
+        <th>hashtag_name</th>
+    </tr>
+</table>
+
+<br>
+<button onclick="migration()">Migrieren</button>
+
+<script>
+    function migration() {
+        let checkboxes = document.getElementsByName("sourceCheckbox");
+        let targetTable = document.querySelector("#zielTabelle"); // Verwende die eindeutige ID
+
+        for (checkbox of checkboxes) {
+            if (checkbox.checked) {
+                let tableRow = checkbox.closest('tr');
+                let cells = tableRow.getElementsByTagName('td');
+
+                // Neue Zeile für die Zieltabelle erstellen
+                let newRow = targetTable.insertRow();
+
+                // Zellenwerte in die neue Zeile kopieren
+                for (let cell of cells) {
+                    let newCell = newRow.insertCell();
+                    newCell.innerText = cell.innerText;
+                }
+            }
+        }
+
+        // Wenn keine Checkbox ausgewählt ist
+        if (!document.querySelector('input[name="sourceCheckbox"]:checked')) {
+            console.log("Es wurde nichts ausgewählt!");
+        }
+    }
+</script>
+
+</body>
+</html>
